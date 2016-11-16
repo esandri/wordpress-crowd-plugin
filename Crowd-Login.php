@@ -98,12 +98,9 @@ function crowd_authenticate($user, $username, $password) {
 }
 
 function crowd_can_authenticate($username, $password) {
-	global $crowd_url;
-	global $crowd_app_name;
-	global $crowd_app_password;
 
-  $response = \Httpful\Request::post($crowd_url . '/rest/usermanagement/1/authentication?username='.$username)
-      ->authenticateWith($crowd_app_name, $crowd_app_password)
+  $response = \Httpful\Request::post(get_option('crowd_url') . '/rest/usermanagement/1/authentication?username='.$username)
+      ->authenticateWith(get_option('crowd_app_name'), get_option('crowd_app_password'))
 			->body('
 				<?xml version="1.0" encoding="UTF-8"?>
 				<password>
@@ -115,14 +112,11 @@ function crowd_can_authenticate($username, $password) {
 }
 
 function crowd_create_wp_user($username) {
-	global $crowd_url;
-	global $crowd_app_name;
-	global $crowd_app_password;
 
 	$result = 0;
 
-  $response = \Httpful\Request::post($crowd_url . '/rest/usermanagement/1/authentication?username='.$username)
-      ->authenticateWith($crowd_app_name, $crowd_app_password)
+  $response = \Httpful\Request::post(get_option('crowd_url') . '/rest/usermanagement/1/authentication?username='.$username)
+      ->authenticateWith(get_option('crowd_app_name'), get_option('crowd_app_password'))
 			->body('
 				<?xml version="1.0" encoding="UTF-8"?>
 				<password>
@@ -151,13 +145,10 @@ function crowd_create_wp_user($username) {
 	return $result;
 }
 
-function getUserInfo(username) {
-	global $crowd_url;
-	global $crowd_app_name;
-	global $crowd_app_password;
+function getUserInfo($username) {
 
-	$response = \Httpful\Request::post($crowd_url . '/rest/usermanagement/1/user?username='.$username)
-      ->authenticateWith($crowd_app_name, $crowd_app_password)
+	$response = \Httpful\Request::post(get_option('crowd_url') . '/rest/usermanagement/1/user?username='.$username)
+      ->authenticateWith(get_option('crowd_app_name'), get_option('crowd_app_password'))
       ->send();
 	return $response->body;
 }
