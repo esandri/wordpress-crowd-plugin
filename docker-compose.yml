@@ -1,0 +1,13 @@
+wordpress:
+  image: wordpress
+  links:
+    - mysql:mysql
+  ports:
+    - 8080:80
+  volumes:
+    - .:/var/www/html/wp-content/plugins/crowd-login
+
+mysql:
+  image: mariadb
+  environment:
+    MYSQL_ROOT_PASSWORD: 2674Ow97ke8YisumUZ5zE/SWF79nQ+/MliNk6KXgiNI
