@@ -1,8 +1,8 @@
 === Plugin Name ===
-Contributors: teixeira@broadinstitute.org, clifgriffin
+Contributors: esandri, sistemi-etime
+Old Contributors: clifgriffin
 Tags: Crowd, authentication, login
-Requires at least: 2.8
-Tested up to: 3.2.1
+Tested on: Wordpress Version 4.6.1 and Crowd Version 4.6.1
 Stable tag: 0.1
 
 Integrating Wordpress with Crowd.  This is basically a rewrite of the "Simple LDAP Login" plugin for Wordpress with all the LDAP logic removed and replaced with calls to a Crowd authentication library instead.  The basic functionality of the plugin was written by clifgriffin (http://clifgriffin.com) with the Crowd stuff implanted by me.  Also, the Crowd client library was written by Infinite Campus, Inc. (http://www.infinitecampus.com/).
